@@ -78,7 +78,10 @@ $IntSleep = $env:FWDELAY       # Delay in seconds between tries
 
 Function Send-AlertMessage ($Message)
 {
+    Write-Output "Mail server: MX of"
+    Write-Output $env:FWMAILDOMAINMX
     $MailServers = (Resolve-DnsName -Type MX -Name $env:FWMAILDOMAINMX).NameExchange
+    Write-Output $MailServers
     $MailFrom = $env:FWMAILFROM
     $MailTo = $env:FWMAILTO
 
