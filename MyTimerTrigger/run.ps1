@@ -80,9 +80,11 @@ Function Send-AlertMessage ($Message)
 {
     $MailFrom = $env:FWMAILFROM
     $MailTo = $env:FWMAILTO
+    $MailServer1 = $env:FWMAILSERVER1
+    $MailServer2 = $env:FWMAILSERVER2
 
-    try { Send-MailMessage -SmtpServer $MailServers1 -From $MailFrom -To $MailTo -Subject $Message -Body $Message }
-    catch { Send-MailMessage -SmtpServer $MailServers2 -From $MailFrom -To $MailTo -Subject $Mesage -Body $Message }
+    try { Send-MailMessage -SmtpServer $MailServer1 -From $MailFrom -To $MailTo -Subject $Message -Body $Message }
+    catch { Send-MailMessage -SmtpServer $MailServer2 -From $MailFrom -To $MailTo -Subject $Mesage -Body $Message }
 }
 
 Function Test-VMStatus ($VM, $FWResourceGroup) 
